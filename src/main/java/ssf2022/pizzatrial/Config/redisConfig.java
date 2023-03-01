@@ -1,6 +1,7 @@
 package ssf2022.pizzatrial.Config;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisClientConfiguration;
@@ -26,15 +27,16 @@ public class redisConfig {
     @Value("${redis.password}")
     private String redisPassword;
 
-
+    @Bean("pizza")
     public RedisTemplate<String, String> createRedisTemplate(){
 
         RedisStandaloneConfiguration config = new RedisStandaloneConfiguration(redisHost, redisPort);
         config.setDatabase(redisDatabase);
         
+        
         if(!redisUser.isEmpty() && !redisPassword.isEmpty()){
             config.setPassword(redisPassword);
-            config.setUsername(redisHost);
+            config.setUsername(redisUser);
         }
 
         JedisClientConfiguration jedisClient = JedisClientConfiguration.builder().build();

@@ -26,7 +26,8 @@ public class pizzaController {
     orderRepo orderRep;
     
     @GetMapping()
-    public String orderPage(Model model){
+    public String orderPage(Model model,HttpSession session){
+        session.invalidate();
         Pizza pizza = new Pizza();
         model.addAttribute("pizza", pizza);
         return "index";

@@ -19,7 +19,7 @@
     <div class="container">
     <h1 class="title">Order Delivery Details</h1>
     <br>
-    <form method="post" th:action="@{/pizza/order}" th:object="${cart}">
+    <form method="post" action="/pizza/order" th:object="${cart}">
         <div class="row">
             <div class="col-2">
             <label for="name" >Name:</label>

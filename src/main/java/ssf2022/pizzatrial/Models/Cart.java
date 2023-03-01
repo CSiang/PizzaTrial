@@ -17,7 +17,7 @@ public class Cart {
     private String phone;
 
     private boolean rush;
-    private String comment;
+    private String comment="";
 
 
     public String getName() {
